@@ -107,15 +107,6 @@ const Main = () => {
         </div>
 
         <div className="home_main_mid_divs">
-          <img
-            src={save}
-            alt="save"
-            className="home_save"
-            style={{ width: "100%" }}
-          ></img>
-        </div>
-
-        <div className="home_main_mid_divs">
           <div className="main_underline3">
             <span>
               <sub>
