@@ -5,6 +5,7 @@ import bike from "./images/Vector (2).svg";
 import health from "./images/Vector (3).svg";
 import car from "./images/Car (1).svg";
 import gift from "./images/Car Gift.png";
+import PrivateRoute from "../Auth/PrivateRoute";
 import { Link } from "react-router-dom";
 
 const Main = () => {
@@ -60,19 +61,21 @@ const Main = () => {
             <input
               type="text"
               className="custom-search-input"
-              autocapitalize="uppercase"
+              autoCapitalize="uppercase"
               placeholder="Enter your car number"
             />
             {/* <span className="floating-label">Your email address</span>
   </input> */}
-            <Link to="/cars/useofcar">
-              <button className="custom-search-botton" type="submit">
-                <span className="car_insure">
-                  Insure now <i class="fas fa-arrow-right"></i>
-                </span>{" "}
-                <i className="fas fa-arrow-right hidd_arr"></i>
-              </button>{" "}
-            </Link>
+            <PrivateRoute>
+              <Link to="/cars/useofcar">
+                <button className="custom-search-botton" type="submit">
+                  <span className="car_insure">
+                    Insure now <i className="fas fa-arrow-right"></i>
+                  </span>{" "}
+                  <i className="fas fa-arrow-right hidd_arr"></i>
+                </button>{" "}
+              </Link>
+            </PrivateRoute>
           </div>
         </div>
         <div className="home_main_mid_divs">
@@ -98,7 +101,7 @@ const Main = () => {
 
             <button className="main_quote_btn">Get a quote</button>
             <button className="main_quote_btn2">
-              <i class="fas fa-chevron-right"></i>
+              <i className="fas fa-chevron-right"></i>
             </button>
           </div>
         </div>

@@ -1,12 +1,35 @@
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Nav2 = () => {
+  const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
+
+  console.log(user);
+
   return (
     <div>
       <div className="nav_collapse">
         <div className="col2 col1">
           <p>Manage your policy</p>
-          <button classname="collapse_login">login</button>
+
+          {isAuthenticated ? (
+            <button
+              className="collapse_login"
+              onClick={() => {
+                logout();
+              }}
+            >
+              Log Out
+            </button>
+          ) : (
+            <button
+              className="collapse_login"
+              onClick={(e) => loginWithRedirect()}
+            >
+              login
+            </button>
+          )}
+
           <hr></hr>
         </div>
 
@@ -19,7 +42,7 @@ const Nav2 = () => {
 
         <div className="col2">
           <h5>Have a partner issued policy</h5>
-          <button classname="collapse_claim">claim</button>
+          <button className="collapse_claim">claim</button>
           <hr></hr>
         </div>
 
