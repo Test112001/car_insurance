@@ -10,6 +10,10 @@ const Navbar = () => {
 
   console.log(user);
 
+  const handleLogin = () => {
+    loginWithRedirect();
+  };
+
   return (
     <div>
       <div className="home_nav">
@@ -54,23 +58,11 @@ const Navbar = () => {
                       </div>
                     ) : (
                       <div>
-                        <button
-                          className="nav_login"
-                          onClick={() => {
-                            loginWithRedirect();
-                          }}
-                        >
+                        <button className="nav_login" onClick={handleLogin}>
                           Log In
                         </button>
                       </div>
                     )}
-
-                    {/* <button
-                      className="nav_login"
-                      onClick={(e) => loginWithRedirect()}
-                    >
-                      Login <i className="fas fa-chevron-down"></i>
-                    </button> */}
                   </div>
                 </a>
               </li>

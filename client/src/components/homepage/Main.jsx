@@ -1,14 +1,45 @@
 import left from "./images/homepage-banner-illustration-1-5d2a4d352884a025c5e728efb0a4c6ce.svg";
 import right from "./images/homepage-banner-illustration-2-99577afed0f02e7ee1411f1e8aede6c9.svg";
-import save from "./images/Screenshot 2021-12-17 at 11.54.28 PM.png";
 import bike from "./images/Vector (2).svg";
 import health from "./images/Vector (3).svg";
 import car from "./images/Car (1).svg";
 import gift from "./images/Car Gift.png";
 import PrivateRoute from "../Auth/PrivateRoute";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Main = () => {
+  const { user, isAuthenticated } = useAuth0();
+
+  const saveAuth = async () => {
+    try {
+      if (isAuthenticated) {
+        const response = await fetch("http://localhost:5000/api/saveAuth", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: user.nickname,
+            email: user.email,
+          }),
+        });
+
+        if (response.ok) {
+          console.log("User data saved to MongoDB");
+        } else {
+          console.error("Failed to save user data to MongoDB");
+        }
+      }
+    } catch (error) {
+      console.error("Error saving user data:", error);
+    }
+  };
+
+  const dataTransfer = () => {
+    saveAuth();
+  };
+
   return (
     <div className="home_main">
       <div className="home_main_child">
@@ -68,7 +99,11 @@ const Main = () => {
   </input> */}
             <PrivateRoute>
               <Link to="/cars/useofcar">
-                <button className="custom-search-botton" type="submit">
+                <button
+                  onClick={dataTransfer}
+                  className="custom-search-botton"
+                  type="submit"
+                >
                   <span className="car_insure">
                     Insure now <i className="fas fa-arrow-right"></i>
                   </span>{" "}
