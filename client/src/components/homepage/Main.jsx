@@ -14,7 +14,7 @@ const Main = () => {
   const saveAuth = async () => {
     try {
       if (isAuthenticated) {
-        const response = await fetch("http://localhost:5000/api/saveAuth", {
+        const response = await fetch("http://localhost:5000/api/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
