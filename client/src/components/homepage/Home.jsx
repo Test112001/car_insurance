@@ -11,9 +11,9 @@ const Home = () => {
     <div className="home_home">
       <Navbar></Navbar>
       <Main></Main>
-      {/* <Sub></Sub> */}
-      {/* <Main2></Main2> */}
-      {/* <Sub2></Sub2> */}
+      <Sub></Sub>
+      <Main2></Main2>
+      <Sub2></Sub2>
     </div>
   );
 };

@@ -1,10 +1,18 @@
 import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 // import logo from "./images/Logo.png";
 import Hamburger from "hamburger-react";
 import Nav2 from "./Nav2";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
+
+  console.log(user);
+
+  const handleLogin = () => {
+    loginWithRedirect();
+  };
 
   return (
     <div>
@@ -36,9 +44,25 @@ const Navbar = () => {
                     <p style={{ marginTop: "3px" }}>
                       Claim, Edit, Renew & More
                     </p>
-                    <button className="nav_login">
-                      Login <i class="fas fa-chevron-down"></i>
-                    </button>
+
+                    {isAuthenticated ? (
+                      <div>
+                        <button
+                          className="nav_login"
+                          onClick={() => {
+                            logout();
+                          }}
+                        >
+                          Log Out
+                        </button>
+                      </div>
+                    ) : (
+                      <div>
+                        <button className="nav_login" onClick={handleLogin}>
+                          Log In
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </a>
               </li>
