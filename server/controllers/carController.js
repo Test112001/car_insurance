@@ -1,4 +1,5 @@
 const Car = require("../models/Car");
+const User = require("../models/User");
 
 const getAllCars = async (req, res) => {
   try {
@@ -9,6 +10,29 @@ const getAllCars = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+// const createCar = async (req, res) => {
+//   try {
+//     const { userId } = req.params;
+
+//     if (!userId) {
+//       return res.status(400).json({ error: "User Id required" });
+//     }
+
+//     const user = await User.findById(userId);
+
+//     if (!user) {
+//       return res.status(404).json({ error: "User not found" });
+//     }
+
+//     const newCar = await Car.create({ ...req.body, userId: userId });
+
+//     return res.status(201).json(newCar);
+//   } catch (err) {
+//     console.error("Error creating car:", err);
+//     res.status(400).json({ err: "Bad Request" });
+//   }
+// };
 
 const createCar = async (req, res) => {
   try {

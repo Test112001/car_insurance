@@ -1,3 +1,12 @@
+:root {
+  --violet: #6029cc;
+}
+
 .App {
-  font-family: system-ui, Helvetica Neue, Helvetica, Arial, sans-serif;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--violet);
 }

@@ -9,7 +9,6 @@ app.use(express.json());
 
 // routes
 
-// const authRoutes = require("./routes/authRoutes");
 const carRoutes = require("./routes/carRoutes");
 const userRoutes = require("./routes/userRoutes");
 
@@ -17,7 +16,6 @@ app.get("/", (req, res) => {
   return res.send("car_insurance_api");
 });
 
-// app.use("/api", authRoutes);
 app.use("/api", carRoutes);
 app.use("/api", userRoutes);
 

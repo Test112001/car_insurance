@@ -4,7 +4,7 @@ import bike from "./images/Vector (2).svg";
 import health from "./images/Vector (3).svg";
 import car from "./images/Car (1).svg";
 import gift from "./images/Car Gift.png";
-import PrivateRoute from "../Auth/PrivateRoute";
+
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -97,20 +97,19 @@ const Main = () => {
             />
             {/* <span className="floating-label">Your email address</span>
   </input> */}
-            <PrivateRoute>
-              <Link to="/cars/useofcar">
-                <button
-                  onClick={dataTransfer}
-                  className="custom-search-botton"
-                  type="submit"
-                >
-                  <span className="car_insure">
-                    Insure now <i className="fas fa-arrow-right"></i>
-                  </span>{" "}
-                  <i className="fas fa-arrow-right hidd_arr"></i>
-                </button>{" "}
-              </Link>
-            </PrivateRoute>
+
+            <Link to="/cars/useofcar">
+              <button
+                onClick={dataTransfer}
+                className="custom-search-botton"
+                type="submit"
+              >
+                <span className="car_insure">
+                  Insure now <i className="fas fa-arrow-right"></i>
+                </span>{" "}
+                <i className="fas fa-arrow-right hidd_arr"></i>
+              </button>{" "}
+            </Link>
           </div>
         </div>
         <div className="home_main_mid_divs">

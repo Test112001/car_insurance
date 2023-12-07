@@ -1,17 +1,21 @@
 import { useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 // import logo from "./images/Logo.png";
 import Hamburger from "hamburger-react";
 import Nav2 from "./Nav2";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  console.log(user);
+  const login = () => {
+    setIsAuthenticated(true);
+  };
 
-  const handleLogin = () => {
-    loginWithRedirect();
+  // Function to simulate a logout (set isAuthenticated to false)
+  const logout = () => {
+    setIsAuthenticated(false);
   };
 
   return (
@@ -47,21 +51,14 @@ const Navbar = () => {
 
                     {isAuthenticated ? (
                       <div>
-                        <button
-                          className="nav_login"
-                          onClick={() => {
-                            logout();
-                          }}
-                        >
-                          Log Out
-                        </button>
+                        <button className="nav_login">Log Out</button>
                       </div>
                     ) : (
-                      <div>
-                        <button className="nav_login" onClick={handleLogin}>
-                          Log In
-                        </button>
-                      </div>
+                      <Link to="/login">
+                        <div>
+                          <button className="nav_login">Log In</button>
+                        </div>
+                      </Link>
                     )}
                   </div>
                 </a>
